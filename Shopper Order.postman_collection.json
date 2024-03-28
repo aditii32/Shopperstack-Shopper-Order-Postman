@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "af2e5bb4-7a84-4268-94ec-8b729b5a6c60",
+		"name": "Shopper Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33643733",
+		"_collection_link": "https://www.postman.com/spacecraft-specialist-7984735/workspace/shopperstack/collection/33643733-af2e5bb4-7a84-4268-94ec-8b729b5a6c60?action=share&source=collection_link&creator=33643733"
+	},
+	"item": [
+		{
+			"name": "Place order from cart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"address\": {\r\n    \"addressId\": 33628,\r\n    \"buildingInfo\": \"Kapoor\",\r\n    \"city\": \"Pune\",\r\n    \"country\": \"India\",\r\n    \"landmark\": \"Kusgoan\",\r\n    \"name\": \"SIT\",\r\n    \"phone\": \"7743839339\",\r\n    \"pincode\": \"432102\",\r\n    \"state\": \"Maharashtra\",\r\n    \"streetInfo\": \"Childern Park\",\r\n    \"type\": \"Home\"\r\n  },\r\n  \"paymentMode\": \"COD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/shoppers/{{shopperId}}/orders",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"shoppers",
+						"{{shopperId}}",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display order history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/shoppers/{{shopperId}}/orders",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"shoppers",
+						"{{shopperId}}",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update order status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/shoppers/{{shopperId}}/orders/{{orderId}}?status=DELIVERED",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"shoppers",
+						"{{shopperId}}",
+						"orders",
+						"{{orderId}}"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "DELIVERED"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Invoice copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWTtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/shoppers/{{shopperId}}/orders/{{orderId}}/invoice",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"shoppers",
+						"{{shopperId}}",
+						"orders",
+						"{{orderId}}",
+						"invoice"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
